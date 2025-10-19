@@ -90,3 +90,43 @@ Die Voraussetzungen von Satz 1.6 sind eigentlich zu stark, dh. der Satz gilt mit
 ### Satz 1.7 (Satz von Arzelà)
 $(f_n)$ Folge von auf $[a,b]$ R-int Funktionen die auf $[a,b]$ punktweise gegen eine R-int. Funktion. Gilt dann zudem dass $C>0$ existiert mit $f:[a,b]$ konvergiert $\|f_n(x)\|\leq C$ für alle $n\in\mathbb N$ und $x\in [a,b]$, so gilt
 $$\lim_{n\to\infty}\int_a^b f_n(x)dx = \int_a^b f(x)dx.$$
+---
+### Bonus (Anwendung für Konvergenzresultat von Fourier-Reihen)
+Sei $f\in C^2(\mathbb R)$ $2\pi$-periodisch. Die Fourie-Partialsummen (in der komplexen Form) sind dann $S_n[f](x) =\sum_{k = -n}^n c_k e^{ikx}$, wobei $c_k = \frac1{2\pi}\int_{-\pi}^\pi f(t) e^{ikt} dt$ für alle $k\in \mathbb Z$.
+#### Übungsaufgabe
+Es gilt $c_k[f'] = ikc_k[f'] = -k^2 c_k[f]$ für alle $k\in \mathbb Z$ 
+$\Rightarrow c_k[f''] = ikc_k[f'] = -k^2c_k[f]$. Mit $M:= max_{x\in[-\pi,\pi]} \|f''(x)\|<\infty$ gilt also $\|c_k[f]\|\leq\frac M{k^2}$. 
+Da $\|e^{ikx}\| = 1$ konvergiert $S_n[f]$ gleichmäßig für $n\to\infty$ wegen des Weierstraß Majoranten-Kriteriums, den$$\|c_k e^{ikx}\| = \|c_k\|\leq\frac M{k^2},\,\text{und} \,\sum_{k=1}^\infty\frac M{k^2}<\infty.$$(Natürlich konvergiert $S_n[f]$ dann auch gegen f, aber das erfordert zusätzlich zum Beispiel ein einfaches pw. Konvergenzresultat)
+
+---
+## Kapitel 1.2 Die Lineare Differenzialgleichung
+### Definition 1.8
+1) Eine Menge $M\subset \mathbb R$ heißt **wegzusammenhängend**, wenn zu beliebigen Punkten $x,y\in M$ ein (stetiger) Weg $\gamma:[0,1]\to M$ mit $\gamma(0) = x$ und $\gamma(1) = y$ existiert ("bel. Paare von Punkten in $M$, können ohne $M$ zu verlassen durch einen Weg verbunden werden")
+2) $G\subset \mathbb R^d$ heißt **Gebiet**, falls $G$ offen und wegzusammenänngend ist.
+### Bemerkung
+1) Tatsächlich kann man sich überlegen, dass in einem Gebiet alle zwei Punkte sogar über einen polygonalen Streckenzug verbunden werden können
+2) Sternförmige und insbesondere Konvexe Teilmengen von $\mathbb R^d$ sind automatisch wegzusammenhängend.
+Warum? DGL Zustandsraum Gebiet
+### Lemma 1.9
+Eine offene Menge $G$ ist genau dann ein Gebiet, wenn aus $G = O_1\cup O_2$ mit $O_1, O_2$ offen und disjunkt stets $O_1 = \varnothing$ oder $O_2 = \varnothing$ folgt. (das heißt, man kann $G$ mit offenen Mengen nicht auf interessant Art in zwei Teile zerlegen.)$$\begin{align}\tilde O_1 \cap G &\neq\varnothing\\
+\tilde O_2 \cap G &\neq\varnothing\\
+\tilde O_1 \cap \tilde O_2 \cap G &\neq\varnothing\\
+G \subset\tilde O_1 &\cup \tilde O_2\end{align}$$
+### Definition 1.10
+$G\subset \mathbb R^2$ ein Gebiet (ohne eine andere vernünftige Menge wie zum Beispiel ein Rechteck $[a,b]\times[L,H]$ mit $a<b$ und $L<H$) und $\varphi: G\to \mathbb R$ stetig.
+1) Eine Funktion $y:I\to \mathbb R$ (mit $I\subset \mathbb R$ nicht-deg. Intervall) heißt *Lösung der DGL 1. Ordnung*$$y'(x) = \varphi(x,y(x)) \qquad(\text{oder kurz } y' = \varphi(x,y)) $$wenn $y$ stetig differenzierbar ist mit $\pmatrix{x\\y(x)}\in G \;\forall\; x\in I$ und $y'(x) = \varphi(x, y(x)) \;\forall\; x\in I.$
+2) $y: I\to\mathbb R$ heißt *Lösung des Anfangswertproblems* (AWP)$$\cases{y' = \varphi(x,y)\\y(\xi) = \eta}$$wenn $\pmatrix{\xi\\\eta}\in G$ und $y$ eine Lösung der DGL $y' = \varphi(x,y)$ mit $\xi\in I$ und $y(\xi) = \eta$.
+3) Seien $f,g: I\to\mathbb R$ stetig. Dann heißt eine DGL der Form$$y' = f(x)\cdot y +g(x)$$*lineare Differentialgleichung 1. Ordnung*.
+   Im Fall $g\equiv 0$ heißt diese DGL *homogen*, sonst *inhomogen*. Schon im Vorkurs der HM1 haben wir insbesondere solche linearen DGL 1. Ordnung gelöst.
+### Satz 1.11
+Sei $I$ nicht deg. Intervall, $f,g: I\to\mathbb R$ stetig. Definiere $y_\gamma :I\to\mathbb R, y_0(x) = exp\left(\int_\xi^x f(t)dt\right)$ und $y_1(x) = y_0(x)\cdot\left(\eta + \int_\xi^x \frac{g(t)}{y_0(t)}dt\right)\;(\xi\in I)$.
+#### Dann
+1) $y_0$ ist eindeutige Lösung des AWP auf $I$$$\cases{y' = f(x)y\\y(\xi) = 1} $$
+2) $y_1$ ist eindeutige Lösung des AWP auf $I$$$\cases{y' = f(x)y+g(x)\\y(\xi) = \eta}$$
+### Bemerkung 
+zur Herleitung mit dem Ansatz "Variation der Konstanten" für inhomogene Lösung bei Kenntnis der zugehörigen homogenen Lösung.
+Sei $F$ Stammfunktion von $f$ mit $F(\xi) = 0\quad (\Rightarrow F(x)= \int_\xi ^x f(t)dt)$. Dann sind alle Lösungen der homogenen DGL $y' = f(x)y$ von der Form $y(x) = c\cdot e^{F(x)}$ für geeignete Konstante $c$. Voraussetzung der Konstanten ist der Ansatz$$y(x) := c(x)e^{F(X)}$$für die Lösung der inhomogenen DGL$$\begin{align}
+&\Rightarrow \underline{f(x)\,y(x)} +g(x) \stackrel!= y'(x) = c'(x)\,e^{F(x)}+ \underline{c(x)\,e^{F(x)}\,f(x)}\\
+&\Rightarrow c'(x) = \frac{g(x)}{e^{F(x)}}
+\end{align} $$
+Lösung mit HDI legt $c$ fest $\to$ Formel wie bey $y_1$.
