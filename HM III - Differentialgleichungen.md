@@ -130,3 +130,48 @@ Sei $F$ Stammfunktion von $f$ mit $F(\xi) = 0\quad (\Rightarrow F(x)= \int_\xi ^
 &\Rightarrow c'(x) = \frac{g(x)}{e^{F(x)}}
 \end{align} $$
 Lösung mit HDI legt $c$ fest $\to$ Formel wie bey $y_1$.
+### Beispiel
+(zu lin. DGL 1.)
+1) *(unvollständig)* $$\text{AWP}\cases{y' = \frac y x-x &dh. $\varphi(t,z) = \frac z t -t$ nach def. für $t=0$\\y(1) = 2} $$
+2) $$\cases{y' = y\sin x + \sin x\\y(0) = 0&$[\varphi(t,z) = f(t)z+g(t),\, f(t) = g(t) = \sin(t)]$}$$
+   Lösung $y_0(x) = exp \int_0^x\sin t\;dt = e^{1-\cos x}$$$\begin{align}
+   y_1(x) &= e^{1-\cos x}\cdot\left(0 + \int_0^x(\sin t)e^{\cos t -1}dt \right) \\
+   &= e^{-\cos t} \cdot(-1) \int_0^x (-\sin t) e^{\cos t}dt \\
+   &= e^{-\cos x}(-1)[e^{\cos t}]_0^x = e^{\cos x}\cdot(e-e^{\cos x})\\
+   &= e^{1-\cos x}-1
+   \end{align}$$
+   Dann ist $y_1$ Lösung von AWP auf Intervall $\mathbb R$ 
+## Existenz und Eindeutigkeitsaussagen
+Solche Resultate sind wichtig schon allein für sich genommen, aus theoretischem und angewandten gründen.
+
+Weitere Aspekte im folgenden:
+1) DGL kann äquivalent als Integralgleichung geschrieben werden
+2) Die Beweistechniken sind konstruktiv und können zur Approximation von Lösungen verwendet werden
+3) In der Regel gibt es "maximale Lösungsintervalle" (angeben), die daher kommen, dass die Lösung gegen den Rand vom Def-Bereich von $\varphi$ läuft und deshalb nicht weiter fortsetzbar ist.
+### Proposition 1.12 (Volterra Integralgleichung)
+$G\subset\mathbb R^2$ sein ein Gebiet $\varphi : G\to\mathbb R$ stetig, $\pmatrix{\xi\\\eta}\in G$. Weiter sei $y: I\to\mathbb R$ mit $I$ nicht deg. Intervall
+Dann löst $y \text{ AWP}\cases{y' = \varphi(x,y)\\y(\xi) = \eta}\Leftrightarrow y(x) = \eta + \int_\xi^x\varphi(t, y(t))\,dt$ für alle $x\in I$.
+Dies ist eine Integralgleichung. $y$ ist auf beigen, aber keine Ableitung möglich
+*Interessant:* Differenzieren verschlechtert Regularität, aber Int. verbessert!
+### Definition 1.13
+$\varphi: M\to \mathbb R,\,M\subset\mathbb R^2$. Dann erfüllt $\varphi$ auf $M$ eine Lipschitz-Bedingung (bezüglich der 2. Variable und mit Lipschitz-konstante $L\geq 0$) (schreibe $\varphi$ erfüllt $(LB)$), wenn $$\forall\pmatrix{x\\y_1},\,\pmatrix{x\\y_2} \in M: \|\varphi(x,y_1) - \varphi(x, y_2)\| \leq L\cdot\|y_1, y_2\| $$
+### Bemerkung
+Folgender Weg ist üblich, um eine $(LB)$ zu überprüfen:
+
+Besitzt $\varphi$ (bezgl. der 2. Variablen) eine *beschränkte* partielle Ableitung $\partial_y \varphi$, zum Beispiel $\|\partial_y\varphi(x,y)\|\leq L$ für alle $\pmatrix{x\\ y}\in M$, so folgt für alle $x, y_1, y_2\in \mathbb R$ mit $\pmatrix{x\\ y_1},\,\pmatrix{x\\ y_2}\subset M$, dass die Verbindungsstrecke der beiden Punkte $\|\varphi(x, y_1) -\varphi(x,y_2)\| \stackrel{\text{MWS}}= \|\partial_y \varphi(x, \xi)(y_1-y_2)\|$ $\leq L\cdot \|y_1-y_2\|$ ($\xi$ geeignet zwischen $y_1$ und $y_2$), dh. $\varphi$ erfüllt *(LB)* mit Konstante $L$.
+### Satz 1.15 (Existenzsatz von Picard-Lindelöf)
+*Gegeben* sei: $r, s> 0,\xi, \eta\in \mathbb R, M =[\xi, \xi + r]\times[\eta-s, \eta+s]$. 
+Zudem sei $\varphi: M\to\mathbb R$ stetig mit (LB) zu Konstante $L> 0$.
+Außerdem sei $\|\varphi(x,y)\|\leq\frac s r$ für alle $\pmatrix{x\\y}\in M$ 
+(um sicherzustellen, dass nach $r$ Zeit noch nicht $[\eta-s,\,\eta+s]$ verlassen werden könnte).
+
+Dann besitzt das AWP $\cases{y' = \varphi(x,y)\\y(\xi) = \eta}$ eine Lösung auf dem Intervall $[\xi, \xi + r]$.
+### Beweis
+Wir definieren eine Folge $(y_n)_{n\in \mathbb N}$ von Funktionen $y_n :[\xi, \xi + r]\to[\eta-s, \eta+s]$ rekursiv durch $y_0(x) \equiv \eta$ *(ein erster aber im Allgemeinen schlechter Lösungskandidat)*
+$$y_{n+1}(x) := \eta + \int_\xi^x\varphi(t,y_n(t))\,dt,\text{ für alle }x\in[\xi,\xi+r]$$
+(Dieses Verfahren heißt Picard-Iteration und ist konstruktiv!)
+Rest des Beweises:
+1) $y_n$ sind wohldefiniert, haben also Werte nur in $[\eta-s, \eta+s]$
+2) $y_n$ konvergiert gleichmäßig gegen eine Funktion $y$
+3) $y$ löst AWP
+
