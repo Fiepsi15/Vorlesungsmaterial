@@ -90,6 +90,7 @@ Die Voraussetzungen von Satz 1.6 sind eigentlich zu stark, dh. der Satz gilt mit
 ### Satz 1.7 (Satz von Arzelà)
 $(f_n)$ Folge von auf $[a,b]$ R-int Funktionen die auf $[a,b]$ punktweise gegen eine R-int. Funktion. Gilt dann zudem dass $C>0$ existiert mit $f:[a,b]$ konvergiert $\|f_n(x)\|\leq C$ für alle $n\in\mathbb N$ und $x\in [a,b]$, so gilt
 $$\lim_{n\to\infty}\int_a^b f_n(x)dx = \int_a^b f(x)dx.$$
+
 ---
 ### Bonus (Anwendung für Konvergenzresultat von Fourier-Reihen)
 Sei $f\in C^2(\mathbb R)$ $2\pi$-periodisch. Die Fourie-Partialsummen (in der komplexen Form) sind dann $S_n[f](x) =\sum_{k = -n}^n c_k e^{ikx}$, wobei $c_k = \frac1{2\pi}\int_{-\pi}^\pi f(t) e^{ikt} dt$ für alle $k\in \mathbb Z$.
@@ -150,11 +151,12 @@ Weitere Aspekte im folgenden:
 3) In der Regel gibt es "maximale Lösungsintervalle" (angeben), die daher kommen, dass die Lösung gegen den Rand vom Def-Bereich von $\varphi$ läuft und deshalb nicht weiter fortsetzbar ist.
 ### Proposition 1.12 (Volterra Integralgleichung)
 $G\subset\mathbb R^2$ sein ein Gebiet $\varphi : G\to\mathbb R$ stetig, $\pmatrix{\xi\\\eta}\in G$. Weiter sei $y: I\to\mathbb R$ mit $I$ nicht deg. Intervall
-Dann löst $y \text{ AWP}\cases{y' = \varphi(x,y)\\y(\xi) = \eta}\Leftrightarrow y(x) = \eta + \int_\xi^x\varphi(t, y(t))\,dt$ für alle $x\in I$.
+Dann löst $y \text{ AWP}\cases{y' = \varphi(x,y)\\ y(\xi) = \eta}\Leftrightarrow y(x) = \eta + \int_\xi^x\varphi(t, y(t))\,dt$ für alle $x\in I$.
 Dies ist eine Integralgleichung. $y$ ist auf beigen, aber keine Ableitung möglich
 *Interessant:* Differenzieren verschlechtert Regularität, aber Int. verbessert!
 ### Definition 1.13
-$\varphi: M\to \mathbb R,\,M\subset\mathbb R^2$. Dann erfüllt $\varphi$ auf $M$ eine Lipschitz-Bedingung (bezüglich der 2. Variable und mit Lipschitz-konstante $L\geq 0$) (schreibe $\varphi$ erfüllt $(LB)$), wenn $$\forall\pmatrix{x\\y_1},\,\pmatrix{x\\y_2} \in M: \|\varphi(x,y_1) - \varphi(x, y_2)\| \leq L\cdot\|y_1, y_2\| $$
+$\varphi: M\to \mathbb R,\,M\subset\mathbb R^2$. Dann erfüllt $\varphi$ auf $M$ eine Lipschitz-Bedingung (bezüglich der 2. Variable und mit Lipschitz-konstante $L\geq 0$) (schreibe $\varphi$ erfüllt $(LB)$), wenn 
+$$\forall\pmatrix{x\\ y_1},\,\pmatrix{x\\ y_2} \in M: \|\varphi(x,y_1) - \varphi(x, y_2)\| \leq L\cdot\|y_1, y_2\| $$
 ### Bemerkung
 Folgender Weg ist üblich, um eine $(LB)$ zu überprüfen:
 
@@ -162,10 +164,10 @@ Besitzt $\varphi$ (bezgl. der 2. Variablen) eine *beschränkte* partielle Ableit
 ### Satz 1.15 (Existenzsatz von Picard-Lindelöf)
 *Gegeben* sei: $r, s> 0,\xi, \eta\in \mathbb R, M =[\xi, \xi + r]\times[\eta-s, \eta+s]$. 
 Zudem sei $\varphi: M\to\mathbb R$ stetig mit (LB) zu Konstante $L> 0$.
-Außerdem sei $\|\varphi(x,y)\|\leq\frac s r$ für alle $\pmatrix{x\\y}\in M$ 
+Außerdem sei $\|\varphi(x,y)\|\leq\frac s r$ für alle $\pmatrix{x\\ y}\in M$ 
 (um sicherzustellen, dass nach $r$ Zeit noch nicht $[\eta-s,\,\eta+s]$ verlassen werden könnte).
 
-Dann besitzt das AWP $\cases{y' = \varphi(x,y)\\y(\xi) = \eta}$ eine Lösung auf dem Intervall $[\xi, \xi + r]$.
+Dann besitzt das AWP $\cases{y' = \varphi(x,y)\\ y(\xi) = \eta}$ eine Lösung auf dem Intervall $[\xi, \xi + r]$.
 ### Beweis
 Wir definieren eine Folge $(y_n)_{n\in \mathbb N}$ von Funktionen $y_n :[\xi, \xi + r]\to[\eta-s, \eta+s]$ rekursiv durch $y_0(x) \equiv \eta$ *(ein erster aber im Allgemeinen schlechter Lösungskandidat)*
 $$y_{n+1}(x) := \eta + \int_\xi^x\varphi(t,y_n(t))\,dt,\text{ für alle }x\in[\xi,\xi+r]$$
@@ -174,4 +176,39 @@ Rest des Beweises:
 1) $y_n$ sind wohldefiniert, haben also Werte nur in $[\eta-s, \eta+s]$
 2) $y_n$ konvergiert gleichmäßig gegen eine Funktion $y$
 3) $y$ löst AWP
+### Bemerkung
+1) Analog gilt dieser Satz auch für Intervalle $[\xi-r,\,\xi]$ oder $[\xi-r,\,\xi+r]$.
+2) Es gilt tatsächlich eine Verallgemeinerung dieses Existenzsatzes **ohne** (LB) auf geeignet klein gewähltem Intervall $\to$ Satz von Peano. (Einschränkung: im Allgemeinen keine eindeutige Lösbarkeit. (LB) liefert diese. Ist relevant für die Existenz maximaler Lösungsintervalle,... )
+### Beispiel
+Picard-Iteration an einfachem Beispiel
+$$\cases{y' = x\cdot y \\ y(0) = 1}$$
+$$\begin{align}
+y_0&:\equiv 1,\quad y_1(x) = 1+\int_0^x t\cdot 1\;dt = 1+\frac {x^2}2\\
+y_2(x) &= 1+\int_0^xt\cdot(1+\frac{t^2}2)\;dt = 1+ \frac{x^2}2+\frac{x^4}8
+\end{align} $$
+Induktion: $y_n (x) = \sum_{k=0}^n \frac{(x^2/2)^k}{k!}$ für alle $x\in\mathbb R$ $\stackrel{n\to\infty}\to \exp(\frac {x^2}2) = y(x)$.
+### Proposition 1.16 (Gronwallsches Lemma)
+Sei $C\geq 0$ und $f,h:[a,b] \to[0, \infty)$ stetig mit $0\leq f(x) \leq C + \int_a^xh(t)f(t) \,dt$. (Integralungleichung, auf beiden seiten steht $f$ $\to$ Implizit). Dann folgt 
+$$0\leq f(x)\leq C\cdot\exp\left(\int_a^xh(t)\;dt\right) \qquad(2)$$
+für alle $x\in[a,b]$.
+Insbesondere: $C = 0\Rightarrow f\equiv 0$.
+**Idee**: $f = \|y_1-y_2\|$ $\leftarrow$ *betrag macht im Allgemeinen die DGL kaputt, aber man bekommt trotzdem noch die Integralgleichung*
+**Anschauung:** Die Funktion rechts in $(2)$ als Wahl von $f$ würde die Integralgleichung mit "=" erfüllen
+### Satz 1.17 (Existenz- und Eindeutigkeitssatz von Picard-Lindelöf)
+Gegeben seien $r,s>0,\, \xi,\eta \in \mathbb R,\, M=[\xi, \xi+r]\times[\eta-s, \eta+s]$ $\varphi: M\to\mathbb R$ sei stetig und erfülle (LB) mit Konstante $L>0$.
+Zudem gelte $\| \varphi(x,y)\|\leq \frac s r$ für alle $\pmatrix{x\\  y}\in M.\quad (3)$
+Dann hat das AWP $\cases{y' = \varphi(x,y)\\ y(\xi) = \eta}$ existiert eine *eindeutige* Lösung $y:[\xi, \xi +r]\to\mathbb R$.
+### Bemerkung
+1) Wieder lässt sich $(3)$ auch damit sicherstellen dass man $r>0$ geeignet klein wählt. Wieder funktioniert das entsprechend auf Intervallen der Form $[\xi-r,\xi]$ oder $[\xi-r,\xi+r]$.
+2) (LB) ist essentiell für die Eindeutigkeits-Aussage!
+### Korollar
+Sei $G\subset\mathbb R$ Gebiet, $\varphi: G\to\mathbb R$ stetig und erfülle auf $G$ eine Lokale Lip-Bedingung (LB$_{loc}$),
+dh. $\forall \pmatrix{x_0\\y_0}\in G \;\exists\; \varepsilon>0: \varphi$ erfüllt (LB) auf $G \cap B(\pmatrix{x_0\\y_0},\varepsilon)$.
+Zudem sei $\pmatrix{\xi\\\eta}\in G$. (Lip-Konstante kann von der Stelle und $\varepsilon$ abhängen).
+Dann existieren $a,b$ mit $a<\xi<b$ derart, dass das AWP$\cases{y' = \varphi(x,y)\\ y(\xi) = \eta}$ auf $(a,b)$ eine eindeutige Lösung besitzt.
+### Proposition 1.18
+(Stetige Abhängigkeit von den gegebenen Daten, dh. insbesondere den AW)
 
+Sei $G\subset \mathbb R^2$ ein Gebiet, $\varphi_1, \varphi_2: G \to \mathbb R$ stetig mit (LB) für Konstante $L>0$.
+Weiter gelte $\|\varphi_1(x,y)- \varphi_2(x,y)\|\leq C$ für alle $\pmatrix{x\\ y}\in G$ mit festem $C \geq 0$
+$y_1: I\to \mathbb R$ sei Lösung des AWP
