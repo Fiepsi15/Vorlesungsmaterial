@@ -211,4 +211,7 @@ Dann existieren $a,b$ mit $a<\xi<b$ derart, dass das AWP$\cases{y' = \varphi(x,y
 
 Sei $G\subset \mathbb R^2$ ein Gebiet, $\varphi_1, \varphi_2: G \to \mathbb R$ stetig mit (LB) für Konstante $L>0$.
 Weiter gelte $\|\varphi_1(x,y)- \varphi_2(x,y)\|\leq C$ für alle $\pmatrix{x\\ y}\in G$ mit festem $C \geq 0$
-$y_1: I\to \mathbb R$ sei Lösung des AWP
+$y_1: I\to \mathbb R$ sei Lösung des AWP$\cases{y' = \varphi(x,y) \\ y(\xi) = \eta_1}$
+$y_2 :I\to \mathbb R$ sei Lösung des AWP$\cases{y' = \varphi(x,y)\\ y(\xi) = \eta_2}$
+mit nicht degeneriertem Intervall $I, \xi\in I,\,\eta_1,\eta_2\in \mathbb R$
+**Dann:** $\|y_1(x)-y_2(x)\|\leq (\|\eta_1-\eta_2\|+c\|x-\xi\|)e^{L\|x-\xi\|}$
