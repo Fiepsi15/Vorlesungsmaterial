@@ -43,12 +43,12 @@ $\Rightarrow y''y-y'^2-1 = 0\quad\text{DGL}$
 - von der Mechanik zu beschreibende Ereignisse: Ort ($\to$ "Punkt") und Zeit ($\to$ "Zeitpunkt") wohldefiniert
 **Beachte:** relativistische Physik und Quantenphysik weichen davon ab!
 ## 1.1 Vektorrechnung in 3D
-### Wh.:
+#### Wh.:
 - Vektorraumaxiome
 - Betrag und Richtung
-### Physik:
+#### Physik:
 Vektoren mit Bezugsobjekt *("Kraft auf $xy$")* oder -punkt *(Vektorfeld: ortsabhängige Größe mit Vektoreigenschaften)*
-### Produkte von Vektoren
+### 1.1.1 Produkte von Vektoren
 1) Skalarprodukt $\quad(\vec a, \vec b)\;\leftarrow$ definierende Eigenschaften 
    3D:$$\vec a\cdot\vec b = \|\vec a\| \cdot\|\vec b\|\cos(\angle(\vec a, \vec b)) $$
    Es gilt:$$\begin{align}
@@ -94,7 +94,7 @@ Vektoren mit Bezugsobjekt *("Kraft auf $xy$")* oder -punkt *(Vektorfeld: ortsabh
    \end{align} $$
    Für $\|\vec n\| = 1$: $\quad(\vec n\otimes\vec n)\,\vec a = (\vec n\cdot\vec a)\,\vec n$ Projektion, s.o. 
    Verkettung zweier linearer Abbildungen ($\stackrel{\wedge}{=}$ Matrix-Matrix-Multiplikation)$$(\vec a\otimes\vec b)\circ(\vec c\otimes\vec d) = (\vec b\cdot\vec c)\;\vec a\otimes\vec a $$
-### Komponentendarstellung
+### 1.1.2 Komponentendarstellung
 Vektoren $\vec b_3, \vec b_2,  \vec b_3$ heißen linear unabhängig, wenn
 $$\lambda_1\vec b_1 + \lambda_2\vec b_2 + \lambda_3\vec b_3 = 0 \Rightarrow \lambda_1 = \lambda_2 = \lambda_3 = 0$$
 im 3D euklidischen Raum: "nicht coplanar", bilden Basis
@@ -125,19 +125,19 @@ Das von $\vec a,\vec b,\vec c$ aufgespannte Parallelepiped hat das Volumen $V =\
 
 rechtshändige ON-Basis: $\;(\vec e_i\times\vec e_j)\cdot\vec e_k = \varepsilon_{ijk}$
 Hilfsformeln für Produkt zweier $\varepsilon_{ijk}$:
-1) $1$ Index gemeinsam: $\;\varepsilon_{ijk}\;\varepsilon_{lmk} = \delta_{ie}\delta_{jm} - \delta_{im}\delta_{jl}$
+1) $1$ Index gemeinsam: $\;\varepsilon_{ijk}\;\varepsilon_{lmk} = \delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}$
 2) $2$ Indizes gemeinsam: $\;\varepsilon_{ijk}\;\varepsilon_{ljk} = 2\delta_{il}$
 3) 3 Indizes gemeinsam: $\;\varepsilon_{ijk}\;\varepsilon_{ijk} = 6$
 
 Folgerung für Vektoren
 $$\begin{align}
-\vec a\times(\vec b\times\vec c) &=\vec b\cdot (\vec a\cdot\vec c)- \vec c\cdot(\vec a\cdot\vec b) &\text{Großmann-Identität}\quad\text{(Grassmann eng.)} \\
-(\vec a\times\vec b)\cdot(\vec c\times\vec d) &= (\vec a\cdot\vec c)(\vec b\cdot\vec d) - (\vec a\cdot\vec a)(\vec b\cdot\vec c) & \text{Lagrange-Identität}\\
+\vec a\times(\vec b\times\vec c) &=\vec b\cdot (\vec a\cdot\vec c)- \vec c\cdot(\vec a\cdot\vec b) &\text{Graßmann-Identität}\quad\text{(Grassmann eng.)} \\
+(\vec a\times\vec b)\cdot(\vec c\times\vec d) &= (\vec a\cdot\vec c)(\vec b\cdot\vec d) - (\vec a\cdot\vec d)(\vec b\cdot\vec c) & \text{Lagrange-Identität}\\
 \vec a\times(\vec b\times\vec c) + \vec b\times(\vec c\times\vec a) &+ \vec c\times(\vec a\times\vec b) = 0 &\text{Jacobi-Identität}
 \end{align}$$
 
 ---
-### Matrix
+#### Matrix
 Komponentendarstellung einer linearen Abbildung $A:\mathbb R^n\to\mathbb R^n$, insbesondere $n = m = 3$
 
 Linearität: $A(\lambda_1\vec x_1+\lambda_2\vec x_2) = \lambda_1 A \vec x_1 + \lambda _2 A\vec x_2$
@@ -214,3 +214,163 @@ Aktive und passive Transformationen
   $$b_i = R_{ij} \,a_j\quad\text{(wie gehabt)} $$
 - *passiv*: $\vec a$ ändert sich nicht, Basis wird gedreht. $\;\vec e_j' = R \,\vec e_j\to$ neue Koordinaten?
 $$a_i' = \vec a\cdot\vec e_i = \vec a\cdot R\,\vec e_i \stackrel{\vec a = a_j\vec e_j} = \vec e_j\cdot R\,\vec e_i\;\vec a_j = R_{ij}\,a_j \leftarrow \text{transponierte/inverse Rotatiosmatrix} $$
+### 1.1.4 Tensoren
+Als Tensoren $k$-ter Stufe bezeichnet man ein Objekt mit k Indizes ($3^k$-komponentiges Zahlen-Tupel).
+$$T_{i_1, i_2, ..., i_k}\quad i_l\in \{1, 2, 3, ...\} $$
+Beispiel $k=2$: Trägheitstensor
+
+Transformationen unter Drehungen: $T'_{i_1, i_2, ..., i_k} = R_{i_1j_1}\, R_{i_2, j_2}\, ... R_{i_k, i_k}\, T_{j_1, j_2, ..., j_k}$
+für Fälle wie Trägheitsmomente (Tensor vermittelt eine Abbildung $k$-Tupel von Vektoren $\to$ Skalar)
+
+Fall $k=2$: $\quad T'_{i_1, i_2} = R_{i_1, j_1}\,R_{i_2, j_2}\,T_{j_1, j_2} =  R_{i_1, j_1}\,T_{j_1, j_2}\,R_{i_2, j_2} \stackrel{\wedge}= R\,T\,R^T$
+
+#### Nachtrag zum Kreuzprodukt:
+Frage: Wie verhalten sich Vektoren bei Punktspiegelung im Raum?
+Eigentlich: $\vec x\to -\vec x$ für alle Vektoren
+Konvention in der Physik: Wenn eine Punktspiegelung angewendet wird, behalten die Rechte-Hand-Regeln bei.
+Dann müssen wir manche Vektoren von der Spiegelung ausnehmen
+$$\vec c = \vec a \times \vec b$$
+- spiegele $\vec a, \vec b\quad\;\, \to$ polare Vektoren
+- spiegele $\vec c$ *nicht* $\to$ axiale Vektoren, Pseudovektoren
+## 1.2 Koordinatensysteme
+### 1.2.1 Kartesische Koordinaten
+$$\vec e_x, \vec e_y, \vec e_z\quad \to\quad\pmatrix{1\\ 0 \\0}, \pmatrix{0\\ 1 \\0}, \pmatrix{0\\ 0 \\1}, $$
+- **dieselbe** Basis für jeden Bezugspunkt im Raum
+- Koordinaten sind *Geraden* (zum Beispiel Linie mit $x,y$ konstant und $z$ variable)
+### 1.2.2 Krummlinige Koordinaten
+$$\begin{align}
+&x(q_1, q_2, q_3) &\vec r = x(q_1, q_2, q_3)\;\vec e_x\\
+&y(q_1, q_2, q_3) & + y(q_1, q_2, q_3)\;\vec e_y\\
+&x(q_1, q_2, q_3) & + z(q_1, q_2, q_3)\;\vec e_z
+\end{align}$$
+- mehrfach/beliebig oft differenzierbare Funktionen
+
+Gegeben: $\vec r (q_1, q_2, q_3)$, $q_1, q_2, q_3$ abhängig von zum Beispiel verwendeter Zeit. $\rightarrow$ einfache Darstellung / standardisierte Darstellung der äußeren Ableitung
+$$\vec e_{q_i} = \frac1{\|\frac{\partial\vec r}{\partial q_{i}}\|}\frac{\partial \vec r}{\partial q_i}\qquad\text{''kovarianter (aus Differentialgeometrie) Einheitsvektor''} $$
+$\vec r (q_1 + \Delta q_1, q_2, q_3) = \vec r (q_1 q_1, q_2, q_3) + \frac{\partial \vec r}{\partial q_1}\,\Delta q_1 + \mathcal O((\Delta q_1)^2)$
+$\vec e_{q_i}$ ist tangential zur Koordinatenlinie mit variable $q_i$.
+
+allgemein infinitesimale Koordinatenänderungen:
+$$d\vec r = \frac{\partial \vec r}{\partial q_1} dq_1 + \frac{\partial \vec r}{\partial q_2} dq_2 + \frac{\partial \vec r}{\partial q_2} dq_2 \quad(*)$$
+geometrische Anschauung:
+- Linien: alle $q$: hängen von einem Parameter $t$ ab (in der Regel Zeit)
+  infinitesimales Element der Länge $ds = \sqrt{d\vec r\cdot d\vec r}$, $(*)$ ist einzusetzen. *(vereinfacht sich für ON-Basis $\vec e_{q_i}$ )*
+- infinitesimales Volumen
+  ![[Drawing 2025-10-23 09.11.34.excalidraw]]
+  Orange: $\frac{\partial \vec r}{\partial q_1} dq_1$
+  Blau: $\frac{\partial \vec r}{\partial q_2} dq_2$
+  Grün: $\frac{\partial \vec r}{\partial q_3} dq_3$
+  $dV = \|(\frac{\partial\vec r}{\partial q_1}\times \frac{\partial \vec r}{\partial q_2})\cdot \frac{\partial \vec r}{\partial q_3}\|\; dq_1\,dq_2\,dq_3 = dx_1 dx_2 dx_3$ 
+  Die drei Raumrichtungen sind Richtungen der Koordinatenlinien
+
+### 1.2.3 Zylinderkoordinaten
+```
+Work in progress, come again later
+```
+### 1.2.4 Kugelkoordinaten
+$$\vec r(r, \vartheta, \varphi) = r\sin\vartheta\cos\varphi\cdot \vec e_x + r\sin\vartheta\sin\varphi\cdot \vec e_y + r\cos\vartheta \cdot\vec e_z $$
+$$\begin{align}
+r = \sqrt{x^2+y^2+z^2}\quad r&\in \mathbb R_0^+\\
+\vartheta & \in [0, \pi]\\
+\varphi & \in (-\pi, \pi]
+\end{align}$$
+$$\begin{align}
+\frac{\partial \vec r}{\partial r} &= \pmatrix{\sin \vartheta \cos\varphi\\ \sin\vartheta\sin\varphi\\ \quad\cos\vartheta}, \|\frac{\partial \vec r}{\partial r}\| = 1\\
+\frac{\partial \vec r}{\partial \vartheta} &= r\pmatrix{\cos \vartheta \cos\varphi\\ \cos\vartheta\sin\varphi\\ \;-\sin\vartheta}, \|\frac{\partial \vec r}{\partial \vartheta}\| = r\\
+\frac{\partial \vec r}{\partial \varphi} &= r \pmatrix{-\sin \vartheta \sin\varphi\\ \;\sin\vartheta\cos\varphi\\ \qquad0}, \|\frac{\partial \vec r}{\partial \varphi}\| = r\sin\vartheta\\
+\end{align}$$
+Beachte:
+- $\vec e_r, \vec e_\vartheta, \vec e_\varphi$ bleiben eine rechtshändige ON-Basis
+- Die Einheitsvektoren sind nur von $\vartheta, \varphi$ abhängig
+- Ableitungen: $\frac\partial{\partial\vartheta}\vec e_r = \vec e_\vartheta$, $\frac\partial{\partial\varphi}\vec e_r = \sin\vartheta\vec e_\varphi$
+- $d\vec r = \vec e_r(\vartheta, \varphi)\,dr+ \vec e_\vartheta(\vartheta,\varphi)\, r\, d\vartheta + \vec e_\varphi(\varphi) \sin\vartheta\, r\,d\varphi$
+- $dV = r^2\sin\vartheta\;dr\,d\vartheta\, d\varphi$
+## 1.3 Kinematische Größen der Punktteilchens
+Kinematik: Beschreibung von Lage und Lageänderung eines Objekts
+1) Ortsvektoren 
+   $$\vec r = \vec r(t)$$
+2) Geschwindigkeit
+   $$\vec v = \frac d{dt} \vec r = \dot{\vec r}$$
+3) Beschleunigung
+   $$\vec a = \frac {d^2}{dt^2} \vec r = \ddot{\vec r}$$
+4) Winkelgeschwindigkeit
+   $$\vec \omega = \frac{\vec r\times\vec v}{r^2},\quad r = \|r\|$$
+5) Flächengeschwindigkeit
+   $$\dot A = \frac12|\vec r\times\vec v| $$
+   $dA = \dot A\, dt$ ist die Fläche eines infinitesimalen Dreiecks
+   $dA = \frac12|\vec r\times d\vec r|$ (halbes Parallelogramm)
+## 1.4 Newtonsche Mechanik des Massenpunktes
+### 1.4.1 Newtonsche Gesetzte
+
+#### 1687 - "principia"
+1) Trägheitsgesetz
+2) $\dot{\vec p} = \vec F, \quad \vec p = m\vec v$
+3) Reaktionsgesetz
+   $$\vec F_{12} = -\vec F_{21} $$
+   Kraft von "2" auf "´1".
+
+### 1.4.2 Auszeichnung von Inertialsystemen.
+Wechsel zwischen Inertialsystemen: *Galilei-Transformation*. Eine *G-T.* ist eine Koordinatentransformation zwischen Bezugssystemen, die sich durch gleichförmige Bewegung sowie eine feste Rotation und eine Raum-Zeit-Transformation unterscheiden.
+![[Drawing 2025-10-28 10.46.03.excalidraw]]
+$$\vec r = x_i\vec e_i = \vec s + \vec w t+ x'_j\vec e'_j,\quad \vec e_j' = R\vec e_j\quad\text{(passive Drehung)} $$
+Beizung der Koordinaten
+$$x_i = \vec s \cdot \vec e_i + \vec w\cdot e_i\cdot t + R_{ij} \,x_j',\quad t= t' + \tau $$
+Parameter der G-Tr.: 
+```
+- Translation (Raum):       3
+- Relativgeschwindigkeit:   3
+- Rotation:                 3
+- Translation (Zeit):       1
+```
+$\Rightarrow 10$  Parameter
+
+Beachte:
+$$\ddot x_1 = R_{ij} - \ddot x_j' \Rightarrow F_j = R_{ij} \; F_j'\quad \text{Transformation von Kräften} $$
+$dt = dt' \Rightarrow$ "Punkt" kann $\frac d{dt}$ oder $\frac d{dt'}$ sein.
+
+Zur vollständigen physikalischen Beschreibung müssen die Kräfte spezifiziert werden.
+Typischer Fall: Angabe eines Kraftgesetzes, oft in der Form $\vec F(\vec r, \vec v, \vec t)$
+$\vec r = \cases{&bezüglich Ursprung/Symetriezentrum\\ &Relativkoordinate}$
+
+Dann ist
+$$m \ddot{\vec r} = \vec F(\vec r, \dot{\vec r}, t ) $$
+ein System von DGL zur Bestimmung von $x_i(t)$.
+Typische Problemstellung: Anfangswertproblem
+$$\vec r(t_0), \;\dot{\vec r(t_0)}\quad\text{gegeben} $$
+$\Rightarrow$ Lösung ist eindeutig: Determinismus der klassischen Mechanik
+
+Benannte Fälle von Kraftgesetzen:
+$$\begin{align}
+\vec F &= \vec F(\vec r, t) &\text{Kraftfeld}\\
+\vec F &= \vec F(\vec r) &\text{stationäres Kraftfeld}\\
+\vec F &= \vec F(t) &\text{homogenes Kraftfeld}\\
+\vec F &= f(r) \vec r &\text{Zentralkraftfeld}
+\end{align}$$
+### 1.4.3 Wichtige Kräfte
+1) Gravitation
+2) Coulombkraft
+3) Lorentzkraft: durch eines $\vec E$ und $\vec B$ bedingt
+   $$\vec F (\vec r, \vec v, t) = q\;\vec E(\vec r, t) + q\; \vec v \times\vec B(\vec r, t) $$
+4) Effektive Reibungskräfte
+   - (a) zwischen festen Oberflächen (Haft, Gleitreibung)
+   - (b) zwischen Körpern und Fluid
+### 1.4.4 Scheinkräfte
+Nicht-Inertialsysteme: $\dot{\vec p} = \vec F$ verletzt, nenne $\dot{\vec p} - \vec F$ "Scheinkraft"
+Übergang zu beschleunigten Bezugssystemen:
+$$\vec r(t) = \vec s(t) + R(t)\;\vec r'(t) $$
+$\vec r(t)$ - Ort im Inertialsystem
+$\vec r'(t)$ - Ort aus der Sicht eines Betrachters am Ort $\vec s(t)$, der sich mit $R(t)$ dreht
+$$d\vec r = \vec r(t + dt) - \vec r(t) = d\vec s + d(R\vec r') = d\vec s + dR\vec r' + R\,\vec r' $$
+$d\vec s$:       $s'$:    Translation
+$dR\vec r'$:   $s'$:     Rotation 
+$Rd\vec r'$:   Bewegung in $s'$
+$$dR\vec r' \stackrel{\text{s. 1.1.3}}= d\vec\Omega\times \vec r' = d\vec \Omega \times R\vec r $$
+Geschwindigkeiten: Mit $\vec \omega = \frac{d\vec\Omega}{dt}$
+$$\dot{\vec r} = \dot{\vec s} + \vec \omega \times R\vec r' + R\dot{\vec r}'. $$
+Infinitesimale Änderungen von $\dot{\vec r}$:
+$$\begin{align}
+d\dot{\vec r} &= d\dot{\vec s} + \dot{\vec \omega} \times R\vec r' + \vec \omega \times d(R\vec r') + d(R\dot{\vec r'}) \\
+&= d\dot{\vec s} + \dot{\vec \omega} \times R\vec r' + \vec \omega \times (d\Omega\times R\vec r') + d\Omega\times R \dot{\vec r'} + R\,d\dot{\vec r'}.
+\end{align}$$
+Beschleunigung
+$$\ddot{\vec r} = \ddot{\vec s} + \dot{\vec \omega} \times R\vec r' + \vec \omega \times (\omega\times R\,\vec r') + 2\vec \omega \times R\dot{\vec r}' + R\ddot{\vec r}'.$$
